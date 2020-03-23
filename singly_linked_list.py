@@ -28,26 +28,26 @@ class SinglyLinkedList:
 		if self.head is None:
 			self.head = node
 		else:
-			tail = self. head
-			while tail.next is not None:
-				tail = tail.next
-			tail.next = node
+			curr = self.head
+			while curr.next is not None:
+				curr = curr.next
+			curr.next = node
 
 
 	# Insert a node after the given node in the list
 	def insert_after(self, key_node, value):
 		node = Node(value)
-		trav = self.head
-		while trav is not None and trav is not key_node:
-			trav = trav.next
+		curr = self.head
+		while curr is not None and curr is not key_node:
+			curr = curr.next
 
-		if trav is None:
+		if curr is None:
 			Print("The key node is not found")
-		elif trav.next is None:
-			trav.next = node
+		elif curr.next is None:
+			curr.next = node
 		else:
-			next_node = trav.next
-			trav.next = node
+			next_node = curr.next
+			curr.next = node
 			node.next = next_node
 
 
@@ -143,21 +143,3 @@ if __name__ == '__main__':
     list.remove(list.head.next)
     print(list.check_node(list.head.next))
     list.printlist()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
