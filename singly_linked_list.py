@@ -94,13 +94,31 @@ class SinglyLinkedList:
 
 		assert curr is not None, "Node not found"
 		if prev is None:
-			self.head = curr = None
+			self.head = curr.next
 		else:
 			prev.next = curr.next
-			curr = None
+		curr = None
+		self.size -= 1
 
+	# Remove the node at the given index, O(n)
+	def remove_at_index(self, index):
+		assert self.head is not None, "List is empty"
+		assert 0 <= index < self.size, "Index out of range"
+		prev, curr = None, self.head
+		curr_index = 0
 
-	#Check if a node is in the list
+		while curr_index != index:
+			prev = curr
+			curr = curr.next
+
+		if prev is None:
+			self.head = curr.next
+		else:
+			prev.next = curr.next
+		curr = None
+		self.size -= 1
+
+	#Check if a node is in the list, O(n)
 	def check_node(self, node):
 		assert self.head is not None, "List is empty"
 		curr = self.head
@@ -112,7 +130,7 @@ class SinglyLinkedList:
 			return False
 		return True
 
-	# print all the items
+	# print all the items, O(n)
 	def printlist(self):
 		assert self.head is not None, "List is empty"
 		curr = self.head
