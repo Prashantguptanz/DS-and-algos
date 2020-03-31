@@ -16,10 +16,10 @@ class BinaryHeap:
 		while i//2 >0:
 			parent_index = i//2
 			child_index = i
-			if self.heap[parent_index] < self.head[child_index]:
+			if self.heap[parent_index] < self.heap[child_index]:
 				break
 			else:
-				heap[child_index], heap[parent_index] = heap[parent_index], heap[child_index]
+				self.heap[child_index], self.heap[parent_index] = self.heap[parent_index], self.heap[child_index]
 				i = i//2
 
 	# Heapify the heap, O(log n)
@@ -66,5 +66,5 @@ if __name__ == "__main__":
 	my_heap = BinaryHeap()
 	my_heap.buildHeap([5, 7, 12, 15, 8, 7, 6, 9, 10])
 	print (my_heap.heap)
-	my_heap.del_min()
+	print(my_heap.del_min())
 	print (my_heap.heap)
